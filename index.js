@@ -11,14 +11,14 @@ const app = express();
 app.use(cors());
 
 //dotenv config
-app.use(dotenv.config());
+dotenv.config();
 
 // config body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // connection to database
-const uri = `mongodb+srv://juanramos:LMPdZZd8pjMOqRYY@cluster0.2h3d5pl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.2h3d5pl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 mongoose.connect(uri);
 
 /**
